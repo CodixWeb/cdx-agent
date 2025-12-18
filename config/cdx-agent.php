@@ -83,6 +83,37 @@ return [
         'cache_clear' => true,
         'git_info' => env('CDX_AGENT_GIT_INFO', true),
         'queue_info' => env('CDX_AGENT_QUEUE_INFO', true),
+        'artisan' => env('CDX_AGENT_ARTISAN', true),
+        'backup' => env('CDX_AGENT_BACKUP', true),
+        'alerts' => env('CDX_AGENT_ALERTS', true),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Allowed Artisan Commands
+    |--------------------------------------------------------------------------
+    |
+    | List of artisan commands that can be executed remotely.
+    | For security, only whitelisted commands are allowed.
+    |
+    */
+    'allowed_artisan_commands' => [
+        'cache:clear',
+        'config:clear',
+        'config:cache',
+        'route:clear',
+        'route:cache',
+        'view:clear',
+        'view:cache',
+        'optimize',
+        'optimize:clear',
+        'queue:restart',
+        'queue:retry',
+        'migrate:status',
+        'storage:link',
+        'schedule:list',
+        'event:list',
+        'route:list',
     ],
 
 ];

@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+use Codix\CdxAgent\Http\Controllers\AlertController;
+use Codix\CdxAgent\Http\Controllers\ArtisanController;
+use Codix\CdxAgent\Http\Controllers\BackupController;
 use Codix\CdxAgent\Http\Controllers\CacheController;
 use Codix\CdxAgent\Http\Controllers\DatabaseController;
 use Codix\CdxAgent\Http\Controllers\HealthController;
@@ -41,4 +44,20 @@ Route::prefix(config('cdx-agent.route_prefix', 'cdx-agent'))
         // Scheduler info (Phase 2)
         Route::get('/scheduler', SchedulerController::class)
             ->name('cdx-agent.scheduler');
+
+        // Artisan commands (Phase 3)
+        Route::post('/artisan', ArtisanController::class)
+            ->name('cdx-agent.artisan');
+        Route::get('/artisan/list', [ArtisanController::class, 'list'])
+            ->name('cdx-agent.artisan.list');
+
+        // Backup status (Phase 3)
+        Route::get('/backup', BackupController::class)
+            ->name('cdx-agent.backup');
+
+        // Alert/Notification status (Phase 3)
+        Route::get('/alerts', AlertController::class)
+            ->name('cdx-agent.alerts');
+        Route::post('/alerts/test', [AlertController::class, 'test'])
+            ->name('cdx-agent.alerts.test');
     });
