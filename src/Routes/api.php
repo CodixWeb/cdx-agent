@@ -12,6 +12,7 @@ use Codix\CdxAgent\Http\Controllers\LogsController;
 use Codix\CdxAgent\Http\Controllers\MaintenanceController;
 use Codix\CdxAgent\Http\Controllers\QueueController;
 use Codix\CdxAgent\Http\Controllers\SchedulerController;
+use Codix\CdxAgent\Http\Controllers\SelfUpdateController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix(config('cdx-agent.route_prefix', 'cdx-agent'))
@@ -60,4 +61,10 @@ Route::prefix(config('cdx-agent.route_prefix', 'cdx-agent'))
             ->name('cdx-agent.alerts');
         Route::post('/alerts/test', [AlertController::class, 'test'])
             ->name('cdx-agent.alerts.test');
+
+        // Self-update (Phase 3)
+        Route::get('/version', SelfUpdateController::class)
+            ->name('cdx-agent.version');
+        Route::post('/update', [SelfUpdateController::class, 'update'])
+            ->name('cdx-agent.update');
     });
