@@ -3,7 +3,7 @@
     "description": "CDX Agent - Remote monitoring and control agent for Laravel applications",
     "type": "library",
     "license": "proprietary",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "authors": [
         {
             "name": "Codix",
